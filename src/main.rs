@@ -1,12 +1,12 @@
 use std::io;
 fn main() {
  
-
+     // list
+ let mut list:Vec<String>=vec![];
 
  loop {
 
-     // list
- let mut list:Vec<String>=vec![];
+
  //input from user
  let mut input:String =String::new();
      
@@ -26,9 +26,11 @@ let choose:i32=input.trim().parse().expect("not number");
 if choose==1{
  add(&mut list);
 }else if choose==2{
+    show(&mut list);
 
 }else if choose==3 {
     
+    rem(& mut list);
 }else if choose==4 {
     break;
 }
@@ -57,6 +59,46 @@ println!("{}-{}",i,m);
 
 }
 
+
+
+}
+
+
+fn show(list:&mut Vec<String>){
+
+    // show the list
+    println!("your list is :");
+    for(i,e) in list.iter().enumerate(){
+        println!("{}-{}",i,e);
+    }
+
+}
+
+fn rem(list:&mut Vec<String>){
+
+ //show user the list before delete
+ for (i,m) in list.iter().enumerate(){
+println!("{}-{}",i,m);
+
+}   
+println!("choose list number to delete the task :");
+let mut choosee:String=String::new();
+
+io::stdin()
+.read_line(&mut choosee).expect("err");
+
+let index:usize=choosee.trim().parse().expect("not number");
+
+
+   
+list.remove(index);
+println!("the task remove from list this new list :");
+
+for(i,e) in list.iter().enumerate(){
+println!("{}-{}",i,e);
+}
+
+   
 
 
 }
