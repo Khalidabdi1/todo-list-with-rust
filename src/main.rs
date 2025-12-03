@@ -1,4 +1,4 @@
-use std::io;
+use std::io::{self,Write};
 fn main() {
  
      // list
@@ -32,6 +32,7 @@ if choose==1{
     
     rem(& mut list);
 }else if choose==4 {
+    print!("------------stop-------------");
     break;
 }
    
@@ -45,6 +46,11 @@ if choose==1{
 
 fn add(list:&mut Vec<String>){
 //add to list
+
+loop{
+println!("------------------");
+
+println!("for go back enter # ");
 println!("ADD TASK :");
 let mut task:String=String::new();
 
@@ -52,12 +58,22 @@ let mut task:String=String::new();
 io::stdin()
 .read_line(&mut task).expect("error");
 
+if task.trim() =="#"{
+    break;
+}
+
+
 list.push(task.to_string().trim().to_string());
 
+println!("------TASK-----");
 for (i,m) in list.iter().enumerate(){
 println!("{}-{}",i,m);
 
 }
+println!("------TASK-----");
+
+}
+
 
 
 
